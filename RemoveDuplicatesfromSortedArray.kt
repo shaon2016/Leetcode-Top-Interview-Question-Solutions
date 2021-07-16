@@ -1,7 +1,9 @@
 fun main() {
-    val nums = intArrayOf(1, 1, 2, 2,3)
+    val nums = intArrayOf(1, 1, 2, 2, 3)
 
     print(removeDuplicates(nums))
+
+
 }
 
 private fun removeDuplicates(nums: IntArray): Int {
@@ -18,3 +20,4 @@ private fun removeDuplicates(nums: IntArray): Int {
 
     return i + 1
 }
+
