@@ -1,3 +1,5 @@
+package array
+
 fun main() {
     val nums = intArrayOf(1, 1, 2, 2, 3)
 

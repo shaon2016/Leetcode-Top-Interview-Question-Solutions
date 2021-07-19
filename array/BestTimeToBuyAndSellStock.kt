@@ -1,3 +1,5 @@
+package array
+
 fun main() {
     print(maxProfit(intArrayOf(7,1,5,3,6,4)))
 }
