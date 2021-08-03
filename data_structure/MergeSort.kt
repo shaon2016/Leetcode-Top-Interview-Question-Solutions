@@ -1,15 +1,10 @@
-package com.copotronic.leetcodepractice.data_structure
+package data_structure
 
 internal class MergeSort {
     // Merges two subarrays of arr[].
     // First subarray is arr[l..m]
     // Second subarray is arr[m+1..r]
-    fun merge(
-        arr: IntArray,
-        l: Int,
-        m: Int,
-        r: Int
-    ) { // Find sizes of two subarrays to be merged
+    fun merge(arr: IntArray, l: Int, m: Int, r: Int) { // Find sizes of two subarrays to be merged
         val n1 = m - l + 1
         val n2 = r - m
         /* Create temp arrays */

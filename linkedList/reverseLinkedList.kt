@@ -8,6 +8,11 @@ class ListNode(var `val`: Int) {
     var next: ListNode? = null
 }
 
+fun deleteNode(node: ListNode?) {
+    node?.`val` = node?.next?.`val` ?: 0
+    node?.next = node?.next?.next
+}
+
 fun reverseList(head: ListNode?): ListNode? {
     if (head == null) return null
 
