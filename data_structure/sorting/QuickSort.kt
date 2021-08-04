@@ -1,7 +1,7 @@
 package data_structure.sorting
 
 fun main() {
-    println(QuickSort.sort(intArrayOf(4, 2, 1,0,1)).toList().toString())
+    println(QuickSort.sort(intArrayOf(5,1,4,5,3,10,3,3,3,32,2,2,9)).toList().toString())
 }
 
 class QuickSort {
