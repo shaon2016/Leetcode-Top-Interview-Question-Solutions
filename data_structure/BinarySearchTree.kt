@@ -11,9 +11,9 @@ fun main() {
 //
 //    bst.traverseInSortedOrder(bst.root)
 
-    bst.root = BinarySearchTree.Node(800)
-    val root1 = bst.insert(bst.root, 70)
-    val root2 = bst.insert(root1, 90)
+    bst.root = BinarySearchTree.Node(50)
+    val root1 = bst.insert(bst.root, 30)
+    val root2 = bst.insert(root1, 20)
 
     bst.traverseInSortedOrder(bst.root)
 
@@ -33,7 +33,7 @@ class BinarySearchTree {
 
                 return currentRoot
             }
-            currentRoot.data < data -> {
+            data < currentRoot.data -> {
                 currentRoot.left = insert(currentRoot.left, data)
             }
             else -> {
@@ -44,17 +44,17 @@ class BinarySearchTree {
         return currentRoot
     }
 
-    fun search(workingNode: Node?, data: Int): Boolean {
+    private fun search(workingNode: Node?, data: Int): Boolean {
         if (workingNode == null) return false
         if (workingNode.data == data) return true
 
-        return if (workingNode.data > data)
+        return if (data > workingNode.data)
             search(workingNode.right, data)
         else
             search(workingNode.left, data)
     }
 
-    fun traverse(workingNode: Node?) {
+    private fun traverse(workingNode: Node?) {
         if (workingNode != null) {
             print("${workingNode.data} ")
 
