@@ -1,20 +1,19 @@
 package data_structure
 
+import kotlin.math.min
+
 fun main() {
     val bst = BinarySearchTree()
 
-//    bst.root =  BinarySearchTree.Node(45)
-//    bst.root!!.left =  BinarySearchTree.Node(10)
-//    bst.root?.right =  BinarySearchTree.Node(90)
-//    bst.root?.left?.left =  BinarySearchTree.Node(7)
-//    bst.root?.left?.right =  BinarySearchTree.Node(12)
-//
-//    bst.traverseInSortedOrder(bst.root)
+    bst.insert(80)
+    bst.insert(30)
+    bst.insert(50)
+    bst.insert(20)
+    bst.insert(40)
+    bst.insert(70)
+    bst.insert(60)
 
-    bst.root = BinarySearchTree.Node(50)
-    val root1 = bst.insert(bst.root, 30)
-    val root2 = bst.insert(root1, 20)
-
+    bst.delete(bst.root, 50)
     bst.traverseInSortedOrder(bst.root)
 
 }
@@ -24,7 +23,7 @@ class BinarySearchTree {
 
     var root: Node? = null
 
-    fun insert(workingNode: Node?, data: Int): Node {
+    private fun insertInToBST(workingNode: Node?, data: Int): Node {
         var currentRoot = workingNode
 
         when {
@@ -34,17 +33,21 @@ class BinarySearchTree {
                 return currentRoot
             }
             data < currentRoot.data -> {
-                currentRoot.left = insert(currentRoot.left, data)
+                currentRoot.left = insertInToBST(currentRoot.left, data)
             }
             else -> {
-                currentRoot.right = insert(currentRoot.right, data)
+                currentRoot.right = insertInToBST(currentRoot.right, data)
             }
         }
 
         return currentRoot
     }
 
-    private fun search(workingNode: Node?, data: Int): Boolean {
+    fun insert(data: Int) {
+        root = insertInToBST(root, data)
+    }
+
+    fun search(workingNode: Node?, data: Int): Boolean {
         if (workingNode == null) return false
         if (workingNode.data == data) return true
 
@@ -54,7 +57,7 @@ class BinarySearchTree {
             search(workingNode.left, data)
     }
 
-    private fun traverse(workingNode: Node?) {
+    fun traverse(workingNode: Node?) {
         if (workingNode != null) {
             print("${workingNode.data} ")
 
@@ -71,5 +74,39 @@ class BinarySearchTree {
 
             traverseInSortedOrder(workingNode.right)
         }
+    }
+
+    fun delete(root: Node?, data: Int): Node? {
+        if (root == null) return root
+
+        when {
+            data < root.data -> root.left = delete(root.left, data)
+            data > root.data -> root.right = delete(root.right, data)
+            // data is found
+            else -> {
+                // node with only one child or no child
+                if (root.left == null) return root.right
+                else if (root.right == null) return root.left
+
+                // Node with two children
+
+                // Replacing it with min value
+                root.data = findMin(root.right!!)
+                root.right = delete(root.right, root.data)
+            }
+        }
+
+        return root;
+    }
+
+    private fun findMin(root: Node): Int {
+        var currentRoot = root
+        var minValue = currentRoot.data
+        while (currentRoot.left != null) {
+            minValue = currentRoot.left!!.data
+            currentRoot = currentRoot.left!!
+        }
+
+        return minValue
     }
 }
