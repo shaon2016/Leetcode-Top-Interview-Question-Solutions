@@ -2,7 +2,7 @@ package tree
 
 import kotlin.math.max
 
-class Solution {
+private class Solution {
     class TreeNode(var `val`: Int) {
         var left: TreeNode? = null
         var right: TreeNode? = null
