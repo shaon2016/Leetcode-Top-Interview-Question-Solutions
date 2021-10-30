@@ -24,6 +24,12 @@ private class ValidBSTSolution {
 
 fun main() {
     val vv = ValidBSTSolution()
+    val tn = ValidBSTSolution.TreeNode(5)
+    tn.left = ValidBSTSolution.TreeNode(3)
+    tn.right = ValidBSTSolution.TreeNode(7)
+    tn.right?.right = ValidBSTSolution.TreeNode(13)
+    tn.right?.left = ValidBSTSolution.TreeNode(4)
 
+    println(vv.isValidBST(tn))
 }
 
