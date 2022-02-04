@@ -34,7 +34,3 @@ class Solution {
         System.out.println(Solution.calPoints(ops));
     }
 }
-//
-//public class Main {
-//
-//}
