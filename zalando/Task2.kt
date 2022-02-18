@@ -45,7 +45,6 @@ fun solution1(N: Int): Int {
         newStr += currentNum
     }
 
-
     var newNumber = newStr.toInt()
     if (isNegative) newNumber *= -1
 
