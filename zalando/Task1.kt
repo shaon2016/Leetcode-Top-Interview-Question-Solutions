@@ -1,4 +1,3 @@
-
 fun main() {
     println(solution(4))
 }
@@ -6,7 +5,7 @@ fun main() {
 fun solution(N: Int): String {
     var str = ""
     (0 until N).forEach { i ->
-        str += if (i % 2==0) "+"
+        str += if (i % 2 == 0) "+"
         else "-"
     }
 

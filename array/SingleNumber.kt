@@ -6,17 +6,14 @@ import kotlin.collections.HashMap
 import kotlin.collections.HashSet
 
 fun main() {
-    println(singleNumber(intArrayOf( 2, 2, 1)))
+    println(singleNumber(intArrayOf(  4,1,2,1,2)))
 }
 
 fun singleNumber(nums: IntArray): Int {
-    val arrayList = ArrayList<Int>()
-
-    nums.forEach {
-        if (arrayList.contains(it)) {
-            arrayList.remove(it)
-        } else arrayList.add(it)
+    var sum = 0
+    for (element in nums) {
+        sum = sum.xor(element)
     }
 
-    return arrayList.first()
+    return sum
 }

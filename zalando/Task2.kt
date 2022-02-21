@@ -1,9 +1,31 @@
 import kotlin.math.abs
 
 fun main() {
-    println(solution1(-999))
+    println(solutionTask2(268))
 }
-
+fun solutionTask2(N: Int): Int {
+    var N = N
+    val digit = 5
+    if (N == 0) return digit * 10
+    val neg = N / abs(N)
+    N = abs(N)
+    var n = N
+    var ctr = 0
+    while (n > 0) {
+        ctr++
+        n /= 10
+    }
+    var pos = 1
+    var maxVal = Int.MIN_VALUE
+    for (i in 0..ctr) {
+        val newVal = N / pos * (pos * 10) + digit * pos + N % pos
+        if (newVal * neg > maxVal) {
+            maxVal = newVal * neg
+        }
+        pos *= 10
+    }
+    return maxVal
+}
 
 fun solution1(N: Int): Int {
     val digit = 5
