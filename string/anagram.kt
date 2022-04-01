@@ -1,7 +1,7 @@
 package string
 
 fun main() {
-    println(isAnagram("aba", "ba"))
+    println(isAnagram("aba", "baa"))
 }
 
 fun isAnagram(s: String, t: String): Boolean {
@@ -12,6 +12,8 @@ fun isAnagram(s: String, t: String): Boolean {
     for (i in s.indices) {
         cA[s[i]  - 'a']++
         cA[t[i]  - 'a']--
+
+        println(s[i] - 'a')
     }
 
     for (i in cA.indices) {

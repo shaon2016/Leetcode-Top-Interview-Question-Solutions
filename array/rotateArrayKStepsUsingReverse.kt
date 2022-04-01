@@ -1,18 +1,19 @@
 package array
 
 fun main() {
-    val nums = intArrayOf(1, 2, 3)
-    rotateByReverse(nums, 6)
-    println(nums.toList().toString())
+    val nums = intArrayOf(1,2,3,4,5,6,7)
+    rotateByReverse(nums, 3)
 }
 
 fun rotateByReverse(nums: IntArray, k: Int) {
     val updatedK = k % nums.size
-    println(updatedK)
 
     reverseArray(nums, 0, nums.size - 1)
+    println(nums.toList().toString())
     reverseArray(nums, 0, updatedK - 1)
+    println(nums.toList().toString())
     reverseArray(nums, updatedK, nums.size - 1)
+    println(nums.toList().toString())
 }
 
 fun reverseArray(nums: IntArray, low: Int, high: Int) {
