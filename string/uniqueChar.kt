@@ -1,7 +1,7 @@
 package string
 
 fun main() {
-    println(firstUniqChar("aaabbcccl"))
+    println(firstUniqChar("leetcode"))
 }
 
 fun firstUniqChar(s: String): Int {
