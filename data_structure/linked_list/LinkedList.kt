@@ -16,7 +16,6 @@ class LinkedList {
                 list.head = newNode
             else {
                 // List is not empty
-
                 var last = list.head!!
 
                 // Traversing through the list
