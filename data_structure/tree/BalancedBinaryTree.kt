@@ -1,6 +1,7 @@
 package data_structure.tree
 
 import kotlin.math.abs
+import kotlin.math.max
 
 /**
  * Example:
@@ -20,14 +21,18 @@ class BalancedBinaryTree {
         var right: TreeNode? = null
     }
 
-    fun isBalanced(root: TreeNode?): Boolean {
-        if (root == null) return true
+    fun isBalanced(root: TreeNode?) = dfs(root)[0] as Boolean
 
-        val lHeight = findTreeHeight(root.left)
-        val rHeight = findTreeHeight(root.right)
+    private fun dfs(root: TreeNode?): ArrayList<Any> {
+        if (root == null) return arrayListOf(true, 0) // tree is empty and it is already balanced
 
-        if(abs(lHeight - rHeight) > 1) return false
-        return true
+        val left = dfs(root.left)
+        val right = dfs(root.right)
+
+        val isBalanced = (left[0] as Boolean && right[0] as Boolean)
+                && abs(left[1] as Int - right[1] as Int) < 2
+
+        return arrayListOf(isBalanced, 1 + max(left[1] as Int, right[1] as Int))
     }
 
     private fun findTreeHeight(root: TreeNode?): Int {
@@ -78,14 +83,20 @@ fun main() {
 //    tn.right?.right?.right = BalancedBinaryTree.TreeNode(4)
 
 //    [1,2,3,4,5,null,6,7,null,null,null,null,8]
-    val tn = BalancedBinaryTree.TreeNode(1)
-    tn.left = BalancedBinaryTree.TreeNode(2)
-    tn.right = BalancedBinaryTree.TreeNode(3)
-    tn.right?.right = BalancedBinaryTree.TreeNode(6)
-    tn.right?.right?.left = BalancedBinaryTree.TreeNode(8)
-    tn.left?.left = BalancedBinaryTree.TreeNode(4)
-    tn.left?.left?.left = BalancedBinaryTree.TreeNode(7)
-    tn.left?.right = BalancedBinaryTree.TreeNode(5)
+//    val tn = BalancedBinaryTree.TreeNode(1)
+//    tn.left = BalancedBinaryTree.TreeNode(2)
+//    tn.right = BalancedBinaryTree.TreeNode(3)
+//    tn.right?.right = BalancedBinaryTree.TreeNode(6)
+//    tn.right?.right?.left = BalancedBinaryTree.TreeNode(8)
+//    tn.left?.left = BalancedBinaryTree.TreeNode(4)
+//    tn.left?.left?.left = BalancedBinaryTree.TreeNode(7)
+//    tn.left?.right = BalancedBinaryTree.TreeNode(5)
 
+    //3,9,20,null,null,15,7
+    val tn = BalancedBinaryTree.TreeNode(3)
+    tn.left = BalancedBinaryTree.TreeNode(9)
+    tn.right = BalancedBinaryTree.TreeNode(20)
+    tn.right?.left = BalancedBinaryTree.TreeNode(15)
+    tn.right?.right = BalancedBinaryTree.TreeNode(7)
     println(bbt.isBalanced(tn))
 }
