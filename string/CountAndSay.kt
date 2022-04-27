@@ -1,7 +1,7 @@
 package string
 
 fun main() {
-    countAndSay(5)
+    println(countAndSay(5))
 }
 
 fun countAndSay(n: Int): String {
