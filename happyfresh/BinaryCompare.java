@@ -9,6 +9,7 @@ public class BinaryCompare {
 
         MySort ms = new MySort();
         Arrays.sort(cities, ms);
+
         System.out.println(Arrays.binarySearch(cities, "New York City"));
     }
     static class MySort implements Comparator<String> {
