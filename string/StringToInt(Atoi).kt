@@ -21,7 +21,7 @@ fun myAtoi(s: String): Int {
 
     var result = 0.toBigInteger()
 
-    for (i in 0 until newStr.length) {
+    for (i in newStr.indices) {
         val char = newStr[i]
 
 
@@ -34,7 +34,7 @@ fun myAtoi(s: String): Int {
     }
 
     println(result)
-    if (isNegative) result *= -1.toBigInteger()
+    if (isNegative) result *= (-1).toBigInteger()
 
 
     if (result <= Int.MIN_VALUE.toBigInteger()) return Int.MIN_VALUE

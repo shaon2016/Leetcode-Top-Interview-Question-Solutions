@@ -1,8 +1,11 @@
 import kotlin.math.abs
 
 fun main() {
-    println(solutionTask2(268))
+    println(solutionTask2(222))
+
+
 }
+
 fun solutionTask2(N: Int): Int {
     var N = N
     val digit = 5
@@ -25,6 +28,50 @@ fun solutionTask2(N: Int): Int {
         pos *= 10
     }
     return maxVal
+}
+
+fun solve(N: Int): Int {
+    val digit = 5
+    if (N == 0) return digit * 10
+
+    var newNumber = 0
+    val numberStr = N.toString()
+
+    // Number is negative
+    if (N < 0) {
+        for (i in 1 until numberStr.length) {
+            val currentNo = numberStr[i] - '0'
+
+            // first number without the negative sign
+            if (i == 1) {
+                newNumber = newNumber * 10 + digit  // adding 5
+                newNumber = newNumber * 10 + currentNo  // adding the current no
+            } else {
+                newNumber = newNumber * 10 + currentNo
+            }
+        }
+
+        return newNumber * -1
+    }
+
+    // Number is positive
+    var isDigitSet = false
+    for (s in numberStr) {
+        val currentNo = s - '0'
+
+        if (currentNo > digit && !isDigitSet) {
+            newNumber = newNumber * 10 + currentNo
+            isDigitSet = true
+        } else if (currentNo < digit && !isDigitSet) {
+            newNumber = newNumber * 10 + digit  // adding 5
+            newNumber = newNumber * 10 + currentNo  // adding the current no
+            isDigitSet = true
+        } else {
+            newNumber = newNumber * 10 + currentNo
+        }
+    }
+
+    return newNumber
 }
 
 fun solution1(N: Int): Int {
