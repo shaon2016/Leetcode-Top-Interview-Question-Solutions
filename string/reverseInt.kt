@@ -1,7 +1,7 @@
 package string
 
 fun main() {
-    reverse(1534236469)
+    println(reverse(547))
 }
 
 fun reverse(x: Int): Int {
@@ -10,15 +10,8 @@ fun reverse(x: Int): Int {
 
     var n = x
 
-    var firstTime = true
     while (n != 0) {
-        if (firstTime) {
-            reversedInt = (n % 10).toLong()
-            firstTime = false
-        } else {
-            reversedInt = (n % 10) + (reversedInt * 10)
-
-        }
+        reversedInt = (n % 10) + (reversedInt * 10)
 
         n /= 10
     }

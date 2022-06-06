@@ -15,6 +15,7 @@ fun longestCommonPrefix(strs: Array<String>): String {
 
             println("i => $i and prefix => $prefix")
         }
+
     }
 
     return prefix

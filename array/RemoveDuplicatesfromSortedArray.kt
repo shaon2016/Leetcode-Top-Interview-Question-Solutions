@@ -1,11 +1,9 @@
 package array
 
 fun main() {
-    val nums = intArrayOf(1, 1, 2, 2, 3)
+    val nums = intArrayOf(0,0,1,1,1,2,2,3,3,4)
 
     print(removeDuplicates(nums))
-
-
 }
 
 private fun removeDuplicates(nums: IntArray): Int {
@@ -19,6 +17,8 @@ private fun removeDuplicates(nums: IntArray): Int {
             nums[++i] = nums[j]
         }
     }
+
+    println(nums.toList())
 
     return i + 1
 }
