@@ -1,4 +1,4 @@
-package tree
+package data_structure.tree
 
 class SortedArrayToBST {
     class TreeNode(var `val`: Int) {
